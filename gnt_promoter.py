@@ -1,16 +1,17 @@
 import time
 import datetime
-import requests 
+import requests
 
 # 1. Configuration Setup
-BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
-CHAT_ID = "@YOUR_TARGET_MUSIC_COMMUNITY_OR_CHANNEL" 
+# Plugs in your verified Bot Token from BotFather
+BOT_TOKEN = "8853517787:AAFcYkWFj6dT_EdbnEeilJ8QmYiZ8XZ3q9U"
+CHAT_ID = "@YOUR_TARGET_MUSIC_COMMUNITY_OR_CHANNEL"
 
 # 2. Your Official Mc TQ Release Assets
-FEATURE_FM_SMARTLINK = "https://ffm.to"
-AUDIOMACK_FIGURE_IT_OUT = "https://audiomack.com"
-AUDIOMACK_IDAN_ORI_TA = "https://audiomack.com"
-YOUTUBE_HUB = "https://youtube.com" 
+FEATURE_FM_SMARTLINK = "https://ffm.to/25195d9b2a3a7d8f7d0d41eca3d8ee75ad6bbba12d95a67f"
+AUDIOMACK_FIGURE_IT_OUT = "https://audiomack.com/spiderwebmatrix01/song/6a2460c51b6dc?share-user-id=112647416"
+AUDIOMACK_IDAN_ORI_TA = "https://audiomack.com/spiderwebmatrix01/song/idan-ori-ta?share-user-id=112647416"
+YOUTUBE_HUB = "https://youtube.com"
 
 MARKETING_MESSAGE = (
     "🚨 MC TQ - OFFICIAL MUSIC OUTREACH! 🧠🔥\n\n"
@@ -20,40 +21,41 @@ MARKETING_MESSAGE = (
     f"🎵 Listen to 'Figure it Out' on Audiomack: {AUDIOMACK_FIGURE_IT_OUT}\n"
     f"🔥 Listen to 'Idan Ori Ta' on Audiomack: {AUDIOMACK_IDAN_ORI_TA}\n"
     f"🎥 Official YouTube Visuals: {YOUTUBE_HUB}\n\n"
-    "Pure quality, zero compromise. Tap to listen, support, and share! 🚀🌍\n"
+    "Pure quality, zero compromise. Tap to listen, support, and share! 🚀🌍\n\n"
     "#McTQ #FigureItOut #IdanOriTa #AfroHipHop #NigerianRap #GNT #Simdef"
-) 
+)
 
 # 3. Core Automation Engine
 def send_marketing_post():
     """Sends the marketing campaign packet to the community endpoint."""
+    # FIXED: Using the accurate api.telegram.org endpoint structure
     url = f"https://telegram.org{BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": CHAT_ID,
         "text": MARKETING_MESSAGE,
         "parse_mode": "Markdown"
-    } 
+    }
 
     try:
         response = requests.post(url, json=payload)
         if response.status_code == 200:
             print(f"[{datetime.datetime.now()}] Campaign successfully posted to community!")
         else:
-            print(f"Failed to post. Status Code: {response.status_code}")
+            print(f"Failed to post. Status Code: {response.status_code}. Response: {response.text}")
     except Exception as e:
-        print(f"An error occurred: {e}") 
+        print(f"An error occurred: {e}")
 
 # 4. Chronological Scheduler Core (Peak Hour Trigger)
-PEAK_HOUR = 18 # 6:00 PM WAT (Peak evening traffic in Nigeria) 
+PEAK_HOUR = 18  # 6:00 PM WAT (Peak evening traffic in Nigeria)
 
-print("GNT Auto-Promoter Core initialized. Monitoring clock...") 
+print("GNT Auto-Promoter Core initialized. Monitoring clock...")
 
 while True:
-    now = datetime.datetime.now() 
+    now = datetime.datetime.now()
 
     # Check if the current time strikes peak hour precisely
     if now.hour == PEAK_HOUR and now.minute == 0:
         send_marketing_post()
-        time.sleep(65) # Prevents multiple duplicate triggers within the same minute 
+        time.sleep(65)  # Prevents multiple duplicate triggers within the same minute
 
-    time.sleep(30) # Sleep interval to keep server processing cycles minimal
+    time.sleep(30)  # Sleep interval to keep server processing cycles minimal
