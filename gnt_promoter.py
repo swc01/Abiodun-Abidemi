@@ -1,22 +1,22 @@
+
 import time
 import datetime
 import requests
 
 # 1. Configuration Setup
-# Plugs in your verified Bot Token from BotFather
+# Fully locked in with your custom token and Dynasty Records channel handle!
 BOT_TOKEN = "8853517787:AAFcYkWFj6dT_EdbnEeilJ8QmYiZ8XZ3q9U"
-CHAT_ID = "@YOUR_TARGET_MUSIC_COMMUNITY_OR_CHANNEL"
+CHAT_ID = "@mctq01"
 
 # 2. Your Official Mc TQ Release Assets
-FEATURE_FM_SMARTLINK = "https://ffm.to/25195d9b2a3a7d8f7d0d41eca3d8ee75ad6bbba12d95a67f"
-AUDIOMACK_FIGURE_IT_OUT = "https://audiomack.com/spiderwebmatrix01/song/6a2460c51b6dc?share-user-id=112647416"
-AUDIOMACK_IDAN_ORI_TA = "https://audiomack.com/spiderwebmatrix01/song/idan-ori-ta?share-user-id=112647416"
+FEATURE_FM_SMARTLINK = "https://ffm.to"
+AUDIOMACK_FIGURE_IT_OUT = "https://audiomack.com"
+AUDIOMACK_IDAN_ORI_TA = "https://audiomack.com"
 YOUTUBE_HUB = "https://youtube.com"
 
 MARKETING_MESSAGE = (
     "🚨 MC TQ - OFFICIAL MUSIC OUTREACH! 🧠🔥\n\n"
-    "The independent grind never stops. Stream the catalog directly "
-    "on all platforms without heavy email attachments:\n\n"
+    "The independent grind never stops. Stream the catalog directly on all platforms without heavy email attachments:\n\n"
     f"👉 Main Smart Link (Spotify/Apple): {FEATURE_FM_SMARTLINK}\n"
     f"🎵 Listen to 'Figure it Out' on Audiomack: {AUDIOMACK_FIGURE_IT_OUT}\n"
     f"🔥 Listen to 'Idan Ori Ta' on Audiomack: {AUDIOMACK_IDAN_ORI_TA}\n"
@@ -28,7 +28,6 @@ MARKETING_MESSAGE = (
 # 3. Core Automation Engine
 def send_marketing_post():
     """Sends the marketing campaign packet to the community endpoint."""
-    # FIXED: Using the accurate api.telegram.org endpoint structure
     url = f"https://telegram.org{BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": CHAT_ID,
